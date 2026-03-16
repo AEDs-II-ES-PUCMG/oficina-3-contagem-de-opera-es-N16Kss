@@ -41,6 +41,7 @@ public class App {
     static int codigo1(int[] vetor) {
         int resposta = 0;
         for (int i = 0; i < vetor.length; i += 2) {
+            operacoes++;
             resposta += vetor[i]%2;
         }
         return resposta;
@@ -55,6 +56,7 @@ public class App {
         int contador = 0;
         for (int k = (vetor.length - 1); k > 0; k /= 2) {
             for (int i = 0; i <= k; i++) {
+                operacoes++;
                 contador++;
             }
 
@@ -71,6 +73,7 @@ public class App {
             int menor = i;
             for (int j = i + 1; j < vetor.length; j++) {
                 if (vetor[j] < vetor[menor])
+                    operacoes++;
                     menor = j;
             }
             int temp = vetor[i];
@@ -85,9 +88,11 @@ public class App {
      * @return Um inteiro que significa...
      */
     static int codigo4(int n) {
-        if (n <= 2)
-            return 1;
+        if (n <= 2){
+            operacoes++;
+            return 1;}
         else
+            operacoes++;
             return codigo4(n - 1) + codigo4(n - 2);
     }
 
@@ -105,6 +110,13 @@ public class App {
         
     }
     public static void main(String[] args) {
+            operacoes++;
+            int[] numeros = new int[3];
+            long inicio = System.nanoTime();
+            codigo2(numeros);
+            long fim = System.nanoTime();
+            long resultado()          
+            System.out.println("Tempo: " + (fim - inicio) + " ns");
         
     }
 }

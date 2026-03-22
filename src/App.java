@@ -72,9 +72,10 @@ public class App {
         for (int i = 0; i < vetor.length - 1; i++) {
             int menor = i;
             for (int j = i + 1; j < vetor.length; j++) {
-                if (vetor[j] < vetor[menor])
-                    operacoes++;
+                operacoes++;
+                if (vetor[j] < vetor[menor]){
                     menor = j;
+                    }
             }
             int temp = vetor[i];
             vetor[i] = vetor[menor];
@@ -90,10 +91,11 @@ public class App {
     static int codigo4(int n) {
         if (n <= 2){
             operacoes++;
-            return 1;}
-        else
+            return 1;
+        } else {
             operacoes++;
             return codigo4(n - 1) + codigo4(n - 2);
+        }
     }
 
     /**
@@ -114,9 +116,7 @@ public class App {
         for (int tamanho : tamanhosTesteGrande) {
 
             int[] vetor = gerarVetor(tamanho);
-
             operacoes = 0;
-
             long inicio = System.nanoTime();
             int resultado = codigo1(vetor);
             long fim = System.nanoTime();
@@ -134,9 +134,7 @@ public class App {
         for (int tamanho : tamanhosTesteGrande) {
 
             int[] vetor = gerarVetor(tamanho);
-
             operacoes = 0;
-
             long inicio = System.nanoTime();
             int resultado = codigo2(vetor);
             long fim = System.nanoTime();
@@ -146,10 +144,44 @@ public class App {
             System.out.println("Tamanho: " + tamanho);
             System.out.println("Contagem de Operações: " + operacoes);
             System.out.println("Tempo: " + tempoMili);
-
         }
 
         System.out.println("- - - - - - - - - -Terceiro- - - - - - - - - -");
+
+        for (int tamanho : tamanhosTesteMedio) {
+
+            int[] vetor = gerarVetor(tamanho);
+            operacoes = 0;
+            long inicio = System.nanoTime();
+            codigo3(vetor);
+            long fim = System.nanoTime();
+
+            double tempoMili = (fim - inicio) * nanoToMilli;
+
+            System.out.println("Tamanho: " + tamanho);
+            System.out.println("Contagem de Operações: " + operacoes);
+            System.out.println("Tempo: " + tempoMili);
+        }
+
+        System.out.println("- - - - - - - - - -Quarto- - - - - - - - - -");
+
+        for (int tamanho : tamanhosTestePequeno) {
+            operacoes = 0;
+            long inicio = System.nanoTime();
+            codigo4(tamanho);
+            long fim = System.nanoTime();
+
+            double tempoMili = (fim - inicio) * nanoToMilli;
+
+            System.out.println("Tamanho: " + tamanho);
+            System.out.println("Contagem de Operações: " + operacoes);
+            System.out.println("Tempo: " + tempoMili);
+        }
+
+
+
+
+
 
 
 

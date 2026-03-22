@@ -131,6 +131,27 @@ public class App {
 
         System.out.println("- - - - - - - - - -Segundo- - - - - - - - - -");
 
+        for (int tamanho : tamanhosTesteGrande) {
+
+            int[] vetor = gerarVetor(tamanho);
+
+            operacoes = 0;
+
+            long inicio = System.nanoTime();
+            int resultado = codigo2(vetor);
+            long fim = System.nanoTime();
+
+            double tempoMili = (fim - inicio) * nanoToMilli;
+
+            System.out.println("Tamanho: " + tamanho);
+            System.out.println("Contagem de Operações: " + operacoes);
+            System.out.println("Tempo: " + tempoMili);
+
+        }
+
+        System.out.println("- - - - - - - - - -Terceiro- - - - - - - - - -");
+
+
 
 
         
